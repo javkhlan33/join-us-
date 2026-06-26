@@ -2,12 +2,17 @@
 
 import { useState } from "react";
 
-export const Step2 = () => {
+export const Step2 = (handleBack, handleNext) => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [emailError, setEmailError] = useState("");
+  const [phoneNumberError, setPhoneNumberError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
+ const onlyMail=
   return (
     <div className="mt-12">
       <div className="space-y-5">

@@ -1,16 +1,16 @@
-export const ContinueButton = ({ handleNext, handleback }) => {
+export const ContinueButton = ({ handleNext, handleBack }) => {
   return (
-    <div>
+    <div className="flex w-full items-center gap-3">
       <button
-        onClick={handleback}
-        className="h-11 px-6 border border-gray-300 rounded-lg text-black"
+        onClick={handleBack}
+        className="w-[120px] h-11 border border-gray-300 rounded-md"
       >
         ← Back
       </button>
 
       <button
         onClick={handleNext}
-        className="fw-full h-14 bg-black text-white rounded-xl mt-24 text-xl font-medium"
+        className="flex-1 h-11 bg-black text-white rounded-md"
       >
         Continue 2/3 →
       </button>
