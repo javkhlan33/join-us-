@@ -2,10 +2,40 @@
 
 import { useState } from "react";
 
-export const Step3 = () => {
+export const Step3 = ({ handleBack, handleNext }) => {
   const [birthDate, setBirthDate] = useState("");
   const [image, setImage] = useState(null);
 
+  const [imageError, setImageError] = useState("");
+  const [birthDateError, setBirthDateError] = useState("");
+
+  const validateInput = () => {
+    let isValid = true;
+
+    if (birthDate.length === 0) {
+      setBirthDateError("Please select a date.");
+      isValid = false;
+    } else {
+      setBirthDateError("");
+    }
+
+    if (image === null) {
+      setImageError("Image cannot be blank");
+      isValid = false;
+    } else {
+      setImageError("");
+    }
+
+    return isValid;
+  };
+
+  const handleClickButton = () => {
+    const shalgah = validateInput();
+
+    if (shalgah) {
+      handleNext();
+    }
+  };
   const handleImage = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -27,6 +57,9 @@ export const Step3 = () => {
           onChange={(e) => setBirthDate(e.target.value)}
           className="w-full h-11 border border-gray-300 rounded-xl px-4 outline-none"
         />
+        {birthDateError.length > 0 && (
+          <p className="text-red-500">{birthDateError}</p>
+        )}
       </div>
 
       {/* Profile image */}
@@ -55,7 +88,25 @@ export const Step3 = () => {
             onChange={handleImage}
             className="hidden"
           />
+          {imageError.length > 0 && (
+            <p className="text-red-500">{imageError}</p>
+          )}
         </label>
+      </div>
+      <div className="flex gap-3 mt-10">
+        <button
+          onClick={handleBack}
+          className="w-1/3 h-12 border border-gray-300 rounded-lg"
+        >
+          ← Back
+        </button>
+
+        <button
+          onClick={handleClickButton}
+          className="w-2/3 h-12 bg-black text-white rounded-lg"
+        >
+          Submit 3/3 →
+        </button>
       </div>
     </div>
   );

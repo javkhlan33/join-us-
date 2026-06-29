@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ContinueButton } from "./continue";
 
 export const Step1 = ({ handleNext }) => {
   const [firstName, setFirstName] = useState("");
